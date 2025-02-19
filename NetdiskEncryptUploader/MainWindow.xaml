@@ -1,0 +1,40 @@
+﻿<Window x:Name="Window" x:Class="NetdiskEncryptUploader.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:NetdiskEncryptUploader"
+        xmlns:gif="http://wpfanimatedgif.codeplex.com"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        Title="Netdisk Encrypt Uploader" Height="450" Width="800" ResizeMode="CanMinimize">
+    <Grid Height="435">
+        <TextBlock HorizontalAlignment="Left" Margin="50,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="24" Text="Netdisk Encrypt Uploader"/>
+        <TextBlock HorizontalAlignment="Left" Margin="50,45,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Text="[Ver 1.0.0] GitHub | Keqing-Yuheng/NetdiskEncryptUploader"/>
+
+        <Button x:Name="btn_Start" Content="START/&#xA; STOP" Width="80" Height="80" Click="btn_Start_Click" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="50,75,0,0" FontSize="18" Background="#FF3296FF" Foreground="White" BorderBrush="#FF3296FF"/>
+        <Button x:Name="btn_ViewPasswd" Content="Show Password" HorizontalAlignment="Left" Width="100" Height="20" Margin="650,100,0,0" VerticalAlignment="Top" Click="btn_ViewPasswd_Click" Background="White" BorderBrush="#FF3296FF"/>
+        <Button x:Name="btn_OpenOutput" Content="Open Output Directory" HorizontalAlignment="Left" Height="20" Margin="160,75,0,0" VerticalAlignment="Top" Width="145" BorderBrush="#FF3296FF" Background="White" Click="btn_OpenOutput_Click"/>
+        <Button x:Name="btn_Upload" Content="Upload" HorizontalAlignment="Left" Height="20" Margin="320,75,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#FF3296FF" Width="50" Click="btn_Upload_Click"/>
+        <CheckBox x:Name="chkbox_Hash" Content="Hash Check (Skip Existed File)" HorizontalAlignment="Left" Height="15" Margin="450,220,0,0" VerticalAlignment="Top" Width="200" Checked="chkbox_Hash_Checked" Unchecked="chkbox_Hash_Unchecked"/>
+        <CheckBox x:Name="chkbox_Encrypt" Content="Encrypt" HorizontalAlignment="Left" Height="15" Margin="660,220,0,0" VerticalAlignment="Top" Width="100" Checked="chkbox_Encrypt_Checked" Unchecked="chkbox_Encrypt_Unchecked"/>
+        <TextBlock x:Name="tblk_Info" HorizontalAlignment="Left" Margin="450,75,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Text="Input:"/><LineBreak/><Run Text="Output"/><Run Text=":"/><LineBreak/><Run Text="Password:"/><Run Text=" "/><Run Text="***"/><LineBreak/><Run Text="Compre"/><Run Language="zh-cn" Text="ssion Level:"/></TextBlock>
+        <TextBlock x:Name="tblk_Progress" HorizontalAlignment="Center" Height="160" Margin="0,252.5,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="685"><LineBreak/><Run Text="Item "/><Run Text="Processed"/><Run Text=": 0"/><LineBreak/><Run Text="Item "/><Run Text="Success: 0"/><LineBreak/><Run Text="Item "/><Run Text="Fail: 0"/><LineBreak/><Run Text="File "/><Run Text="Processes: 0"/><LineBreak/><Run Text="File "/><Run Text="Skipped: 0"/><LineBreak/><Run Text="File "/><Run Text="Success: 0"/><LineBreak/><Run Text="File "/><Run Text="Fail: 0"/></TextBlock>
+        <Image x:Name="rect_IconWarn" HorizontalAlignment="Left" Height="50" Margin="125,175,0,0" VerticalAlignment="Top" Width="50" Source="/IconWarn.png"/>
+        <Rectangle x:Name="rect_IconCancelled" HorizontalAlignment="Left" Height="50" Margin="50,175,0,0" Stroke="Black" VerticalAlignment="Top" Fill="Red" Width="50"/>
+        <Image x:Name="rect_IconComplete" HorizontalAlignment="Left" Height="50" Margin="50,175,0,0" VerticalAlignment="Top" Width="50" Source="/IconComplete.png"/>
+        <Image x:Name="rect_IconRun" gif:ImageBehavior.AnimatedSource="/IconRunning.gif" HorizontalAlignment="Left" Height="50" Margin="50,175,0,0" VerticalAlignment="Top" Width="50"/>
+        <Expander HorizontalAlignment="Left" Height="80" Header="Clear Output" Margin="160,100,0,0" VerticalAlignment="Top" Width="265" Expanded="Expander_HideSuccessSign" MouseDown="Expander_HideSuccessSign">
+            <Grid Background="White">
+                <Slider x:Name="slider_Del" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="140" LargeChange="20" Maximum="100" Minimum="0" SmallChange="20" TickPlacement="None" Value="0" IsSnapToTickEnabled="True" ValueChanged="slider_Del_ValueChanged" Margin="5,5,0,0"/>
+                <TextBlock HorizontalAlignment="Left" Margin="5,25,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="260" Foreground="Red"><Run Text="&gt;&gt;&gt;"/><Run Text=" "/><Run Text="SLIDE TO "/><Run Language="zh-cn" Text="CLEAR"/><Run Text=" "/><Run Text="&gt;&gt;&gt;"/><LineBreak/><Run Text="Ensure backup is completed before deleting"/></TextBlock>
+                <Image x:Name="rect_IconCompleteForClear" HorizontalAlignment="Left" Height="25" VerticalAlignment="Top" Width="25" Source="/IconComplete.png" Margin="155,2.5,0,0"/>
+            </Grid>
+        </Expander>
+        <TextBlock HorizontalAlignment="Left" Margin="50,237,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="15" FontWeight="Bold"><Run Language="zh-cn" Text="STATISTICS"/></TextBlock>
+        <Rectangle HorizontalAlignment="Center" Height="1.5" Margin="80,245,0,0" Stroke="Black" VerticalAlignment="Top" Width="620" Fill="Black"/>
+        <TextBlock HorizontalAlignment="Left" Height="75" Margin="570,140,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="180" FontSize="8"><Run Text="Large                                        Small / File Size"/><LineBreak/><Run Text=" "/><Run Text="0    "/><Run Text="  "/><Run Text=" "/><Run Text="  "/><Run Text="1     "/><Run Text="    "/><Run Text="2"/><Run Text="    "/><Run Text="    "/><Run Text=" "/><Run Text="3"/><Run Text="    "/><Run Text="     "/><Run Text="4"/><Run Text="  "/><Run Text="    "/><Run Text="   "/><Run Text="5"/><LineBreak/><Run/><LineBreak/><Run/><LineBreak/><Run/><LineBreak/><Run Text=" "/><Run Text="0    "/><Run Text="  "/><Run Text=" "/><Run Text="  "/><Run Text="1     "/><Run Text="    "/><Run Text="2"/><Run Text="    "/><Run Text="    "/><Run Text=" "/><Run Text="3"/><Run Text="    "/><Run Text="     "/><Run Text="4"/><Run Text="  "/><Run Text="    "/><Run Text="   "/><Run Text="5"/><LineBreak/><Run Text="Fast                                            Slow / Speed"/></TextBlock>
+        <Slider x:Name="slider_CompressLv" HorizontalAlignment="Left" Height="30" Margin="570,160,0,0" VerticalAlignment="Top" Width="140" LargeChange="1" Maximum="5" Minimum="0" SmallChange="1" TickPlacement="Both" Value="5" IsSnapToTickEnabled="True" Foreground="Black" ValueChanged="slider_CompressLv_ValueChanged"/>
+
+    </Grid>
+</Window>

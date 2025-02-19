@@ -1,0 +1,41 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+    <ApplicationIcon>icon.ico</ApplicationIcon>
+    <Title>NetdiskEncryptUploader</Title>
+    <Authors>Keqing-Yuheng</Authors>
+    <Company>Keqing-Yuheng</Company>
+    <Product>NetdiskEncryptUploader</Product>
+    <Copyright>Keqing-Yuheng</Copyright>
+    <Version>1.0.0</Version>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="IconComplete.png" />
+    <None Remove="IconRunning.gif" />
+    <None Remove="IconRunning.png" />
+    <None Remove="IconWarn.png" />
+    <None Remove="SplashScreen1.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="icon.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Squid-Box.SevenZipSharp" Version="1.6.2.24" />
+    <PackageReference Include="WpfAnimatedGif" Version="2.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="IconComplete.png" />
+    <Resource Include="IconRunning.gif" />
+    <Resource Include="IconWarn.png" />
+  </ItemGroup>
+
+</Project>
