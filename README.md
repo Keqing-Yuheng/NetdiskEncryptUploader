@@ -11,12 +11,13 @@ The project is designed to help utilize netdisks as a convenient off-site backup
 
 ## Features
 
-**Ver 1.0.0**
+**Ver 1.1.0**
 
 Implemented:
 
 - [x] Encrypting files
 - [x] Skipping automatically when the file has no modification
+- [x] Multi-thread
 - [x] One-click uploading encrypted files (adding uploading operation to config is needed).
 
 In Progress:
@@ -47,8 +48,14 @@ NuGet Budge:
 -  WpfAnimatedGif ([NuGet](https://www.nuget.org/packages/WpfAnimatedGif) | [GitHub](https://github.com/XamlAnimatedGif/WpfAnimatedGif))
 
 DLL:
-- 7z.dll ([7-Zip Website](https://www.7-zip.org/))
-  Attention: 7z.dll in this repository might not be latest
+- 7z.dll ([7-Zip Website](https://www.7-zip.org/)) (Attention: 7z.dll in this repository might not be latest)
+
+## Update
+
+### Ver 1.0.1
+- Multi-thread compression
+- Update relative filename format
+- Bug fix
 
 ## License
 
